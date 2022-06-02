@@ -1,0 +1,123 @@
+﻿@model BBMS.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <div class="nine">
+        <h1>BLOOD BANK MANAGEMENT SYSTEM<span>Donate to Save a Life</span></h1>
+    </div>
+    <style>
+        .nine h1 {
+            text-align: center;
+            font-size: 50px;
+            text-transform: uppercase;
+            color:crimson;
+            letter-spacing: 1px;
+            font-family: "Playfair Display", serif;
+            font-weight: 400;
+        }
+
+        .nine h1 span {
+            margin-top: 5px;
+            font-size: 15px;
+            color: #444;
+            word-spacing: 1px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: "Raleway", sans-serif;
+            font-weight: 500;
+            display: grid;
+            grid-template-columns: 1fr max-content 1fr;
+            grid-template-rows: 27px 0;
+            grid-gap: 20px;
+            align-items: center;
+        }
+
+        .nine h1 span:after, .nine h1 span:before {
+            content: " ";
+            display: block;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            height: 5px;
+            background-color: #f8f8f8;
+        }
+
+        #login-div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+
+        .content {
+            background: rgba(255,255,255,0.04);
+            box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+        }
+    </style>
+</head>
+<body background="~/Content/Images/1.jpg">
+    
+    <div class="content" id="login-div">
+        @using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
+        {
+        <table>
+            <tr>
+                <td></td>
+                <td style="text-decoration:underline">LOGIN FORM</td>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.UserName)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.UserName)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(model => model.Password)</td>
+                <td>@Html.EditorFor(model => model.Password)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.ValidationMessageFor(model => model.Password)</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" name="name" value="Login" />
+                    <input type="reset" name="name" value="Clear" />
+                </td>
+            </tr>
+        </table>
+        }
+
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+
